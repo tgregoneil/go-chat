@@ -1,0 +1,25 @@
+{
+  "name": "go-chat",
+  "version": "3.0.3",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "keywords": [],
+  "author": "T. Greg O'Neil <go22.npm@gmail.com> (http://tgregoneil.com)",
+  "license": "ISC",
+  "readme": "readme.md",
+  "homepage": "https://github.com/tgregoneil/go-chat",
+  "repository": {
+    "url": "git+ssh://github.com/tgregoneil/go-chat.git",
+    "type": "git"
+  },
+  "dependencies": {
+    "go-j2h": "*",
+    "ws": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/tgregoneil/go-chat/issues"
+  }
+}
