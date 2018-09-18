@@ -5,6 +5,6 @@ For secure WebSocket usage, replace the empty cert.pem and privkey.pem with the 
 
 where domain is replaced with your domain name.
 
-Then, invode chatServer with '--secure' option:
+Then, invoke chatServer with '--secure' option:
 
     Server/chatServer.js --secure
