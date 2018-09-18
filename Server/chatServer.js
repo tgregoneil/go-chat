@@ -92,27 +92,36 @@ f.initConnection = (ws, req) => {
 }; // end f.initConnection 
 
 //---------------------
+f.broadcast = (userSrc, msg) => {
+    
+    var msgOut = {echomsg: msg, user: userSrc};
+
+    v.msgHistory.push (msgOut);
+
+    for (var wsId = 0; wsId < v.wsConnects.length; wsId++) {
+
+        var wsConnect = v.wsConnects [wsId];
+
+        if (wsConnect.active) {
+    
+            f.toClient (wsId, msgOut);
+
+        } // end if (wsConnect.active)
+        
+
+    } // end for (var ix = 0; ix < v.wsConnects.length; ix++)
+
+}; // end f.broadcast 
+
+        
+//---------------------
 f.fromClient = (wsId, msgOb) => {
     console.log ('msg: ' + JSON.stringify (msgOb) + '\n');
     
-    var user;
     if (msgOb.hasOwnProperty ('user0')) {
 
-        var user0 = msgOb.user0;
-        if (v.users.hasOwnProperty (user0)) {
-
-            var suffix = v.users [user0];
-            user = user0 + suffix;
-            v.users [user0] = suffix + 1;
-
-        } else {
-
-            v.users [user0] = 1;
-            user = user0;
-
-        } // end if (v.users.hasOwnProperty (user0))
-        
         var wsConnect = v.wsConnects [wsId];
+        var user = f.uniqUserName (msgOb.user0);
         wsConnect.user = user;
 
         f.broadcast (v.userSystem, 'User ' + user + ' joined the conversation');
@@ -145,26 +154,25 @@ f.toClient = (wsId, msg) => {
 }; // end f.toClient 
 
 //---------------------
-f.broadcast = (userSrc, msg) => {
+f.uniqUserName = (user0) => {
     
-    var msgOut = {echomsg: msg, user: userSrc};
+    var user;
+    if (v.users.hasOwnProperty (user0)) {
 
-    v.msgHistory.push (msgOut);
+        var suffix = v.users [user0];
+        user = user0 + suffix;
+        v.users [user0] = suffix + 1;
 
-    for (var wsId = 0; wsId < v.wsConnects.length; wsId++) {
+    } else {
 
-        var wsConnect = v.wsConnects [wsId];
+        v.users [user0] = 1;
+        user = user0;
 
-        if (wsConnect.active) {
-    
-            f.toClient (wsId, msgOut);
+    } // end if (v.users.hasOwnProperty (user0))
 
-        } // end if (wsConnect.active)
-        
+    return user;
 
-    } // end for (var ix = 0; ix < v.wsConnects.length; ix++)
-
-}; // end f.broadcast 
+}; // end f.uniqUserName 
 
 
 f.init ();
