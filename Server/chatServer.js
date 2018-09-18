@@ -47,6 +47,8 @@ f.init = () => {
 
         var credentials = {key: privkey, cert: cert};
         var httpsServer = v.https.createServer (credentials);
+            // v.https = require ('https')
+            // in v = {} section for private variables, above
 
         httpsServer.listen (v.port);
 
