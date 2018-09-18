@@ -18,7 +18,6 @@ var v = {
 
         // used if secure connection
     fs: require ('fs'),
-    expressApp: require ('express') (),
     https: require ('https'),
     privkeyFile: './sslcert/privkey.pem',
     certFile: './sslcert/cert.pem',
@@ -47,7 +46,7 @@ f.init = () => {
         var cert = v.fs.readFileSync (v.certFile, 'utf8');
 
         var credentials = {key: privkey, cert: cert};
-        var httpsServer = v.https.createServer (credentials, v.express);
+        var httpsServer = v.https.createServer (credentials);
 
         httpsServer.listen (v.port);
 
