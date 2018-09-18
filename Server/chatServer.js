@@ -19,8 +19,8 @@ var v = {
         // used if secure connection
     fs: require ('fs'),
     https: require ('https'),
-    privkeyFile: './sslcert/privkey.pem',
-    certFile: './sslcert/cert.pem',
+    privkeyFile: './sslcerts/privkey.pem',
+    certFile: './sslcerts/cert.pem',
 
 };  // end PRIVATE properties
 
@@ -34,7 +34,7 @@ f.init = () => {
     if (process.argv.length === 3 && process.argv [2] === '--secure') {
 
         v.isSecure = true;
-        console.log ('Secure websockets: assumes sslcert directory exists in the "Server" directory and contains privkey.pem and cert.pem files');
+        console.log ('Secure websockets: assumes sslcerts directory exists in the "Server" directory and contains privkey.pem and cert.pem files');
 
     } // end if (process.argv.length === 3 && process.argv [2] === '--secure')
     
