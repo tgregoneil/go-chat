@@ -4,3 +4,7 @@ For secure WebSocket usage, replace the empty cert.pem and privkey.pem with the 
     /etc/letsencrypt/live/domain.com/privkey.key
 
 where domain is replaced with your domain name.
+
+Then, invode chatServer with '--secure' option:
+
+    Server/chatServer.js --secure
