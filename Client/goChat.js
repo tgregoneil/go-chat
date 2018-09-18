@@ -97,7 +97,7 @@ f.init = () => {
         var urlWs = prefix + '://' + domain + ':' + v.port;
         v.wsServer = new WebSocket (urlWs);
 
-        if (v.wsServer.readState !== 1) {
+        if (v.wsServer.readyState !== 1) {
 
             v.j2h ([
                 {empty: v.IdUserDiv},
@@ -108,16 +108,17 @@ f.init = () => {
         } // end if (v.wsServer.readState !== 1)
         
 
-        v.wsServer.onmessage = f.fromSrvr;
+        v.wsServer.onmessage = function (event) {
+            var msg = JSON.parse (event.data);
+            f.fromSrvr (msg);
+        };
 
     });
 };  // end f.init
 
 //---------------------
-f.fromSrvr = (event) => {
+f.fromSrvr = (msg) => {
     
-    var msg = JSON.parse (event.data);
-
     if (Array.isArray (msg)) {
 
         for (var im = 0; im < msg.length; im++) {

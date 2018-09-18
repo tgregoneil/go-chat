@@ -127,13 +127,7 @@ f.fromClient = (wsId, msgOb) => {
 
         f.broadcast (v.userSystem, 'User ' + user + ' joined the conversation');
 
-        f.toClient (wsId, {setuser: user});
-
-        for (var im = 0; im < v.msgHistory.length; im++) {
-
-            f.toClient (wsId, v.msgHistory [im]);
-
-        } // end for (var im = 0; im < v.msgHistory.length; im++)
+        f.toClient (wsId, [{setuser: user}, v.msgHistory])
         
 
     } else if (msgOb.hasOwnProperty ('chatmsg')) {
