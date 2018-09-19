@@ -22,10 +22,10 @@ Browse to Client/index.html
 
 ### Enter chat session form:
 
-![rendered](https://github.com/tgregoneil/go-chat/blob/master/Screenshots/chatGuy.png)
+![rendered](https://github.com/tgregoneil/go-chat/blob/master/Screenshots/enterChatGuy.png)
 
 ### Sample chat session:
 
-![rendered](https://github.com/tgregoneil/go-chat/blob/master/Screenshots/chatSession.png)
+![rendered](https://github.com/tgregoneil/go-chat/blob/master/Screenshots/sampleChatSession.png)
 
 
