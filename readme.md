@@ -18,3 +18,14 @@ Start server. See the readme file in Server/sslcerts for secure access
 ```
 
 Browse to Client/index.html
+
+
+### Enter chat session form:
+
+![rendered](https://github.com/tgregoneil/go-chat/blob/master/Screenshots/chatGuy.png)
+
+### Sample chat session:
+
+![rendered](https://github.com/tgregoneil/go-chat/blob/master/Screenshots/chatSession.png)
+
+
