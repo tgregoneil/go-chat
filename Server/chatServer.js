@@ -150,6 +150,8 @@ f.toClient = (wsId, msg) => {
 
 //---------------------
 f.uniqUserName = (user0) => {
+    // examp: if user0 = 'foo' already exists in chat session, 'foo1' will be
+    // created. If another 'foo' is joining, that user will be 'foo2', etc.
     
     var user;
     if (v.users.hasOwnProperty (user0)) {
