@@ -99,9 +99,9 @@ f.init = () => {
 
         setTimeout (function () {
 
-                // 1000ms delay to check readyState, because when v.wsServer is initially assigned
+                // 5000ms delay to check readyState, because when v.wsServer is initially assigned
                 // in the statement above, readyState is 0. There is small delay (a few ms) before 
-                // it changes to 1, if the server is available. So 1000ms is plenty of margin to wait
+                // it changes to 1, if the server is available. So 5000ms is plenty of margin to wait
                 // for readyState to change to 1 indicating chatServer.js is available
             if (v.wsServer.readyState !== 1) {
     
@@ -113,7 +113,7 @@ f.init = () => {
                 
             } // end if (v.wsServer.readState !== 1)
     
-        }, 1000);
+        }, 5000);
 
         v.wsServer.onmessage = function (event) {
             var msg = JSON.parse (event.data);
