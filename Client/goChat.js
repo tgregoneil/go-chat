@@ -97,16 +97,23 @@ f.init = () => {
         var urlWs = prefix + '://' + domain + ':' + v.port;
         v.wsServer = new WebSocket (urlWs);
 
-        if (v.wsServer.readyState !== 1) {
+        setTimeout (function () {
 
-            v.j2h ([
-                {empty: v.IdUserDiv},
-                {text: 'Hello: ' + v.user0 + '. Chat server not ready', parent: v.IdUserDiv}
-            ]);
-            
-
-        } // end if (v.wsServer.readState !== 1)
-        
+                // 10ms delay to check readyState, because when v.wsServer is initially assigned
+                // in the statement above, readyState is 0. There is small delay (less than 1ms) before 
+                // it changes to 1, if the server is available. So 10ms is plenty of margin to wait
+                // for readyState to change to 1 indicating chatServer.js is available
+            if (v.wsServer.readyState !== 1) {
+    
+                    // if not available after the 10ms delay, then output unavailable message
+                v.j2h ([
+                    {empty: v.IdUserDiv},
+                    {text: 'Hello: ' + v.user0 + '. Chat server not ready', parent: v.IdUserDiv}
+                ]);
+                
+            } // end if (v.wsServer.readState !== 1)
+    
+        }, 10);
 
         v.wsServer.onmessage = function (event) {
             var msg = JSON.parse (event.data);
