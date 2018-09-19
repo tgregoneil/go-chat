@@ -85,6 +85,8 @@ f.init = () => {
         var domain = 'localhost';
 
         var matched = url.match (/(https?):..([^\/]+)/);
+            // e.g. https://mongoscout.com/go-chat
+
         if (matched) {
 
             isHttps = matched [1] === 'https';
