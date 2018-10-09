@@ -101,21 +101,20 @@ f.init = () => {
 
         setTimeout (function () {
 
-                // 5000ms delay to check readyState, because when v.wsServer is initially assigned
+                // 100ms delay to check readyState, because when v.wsServer is initially assigned
                 // in the statement above, readyState is 0. There is small delay (a few ms) before 
-                // it changes to 1, if the server is available. So 5000ms is plenty of margin to wait
-                // for readyState to change to 1 indicating chatServer.js is available
+                // it changes to 1, if the server is available. 
             if (v.wsServer.readyState !== 1) {
     
                     // if not available after the 10ms delay, then output unavailable message
                 v.j2h ([
                     {empty: v.IdUserDiv},
-                    {text: 'Hello: ' + v.user0 + '. Chat server not ready', parent: v.IdUserDiv}
+                    {text: 'Hello: ' + v.user0 + '. Connecting with chat server ...', parent: v.IdUserDiv}
                 ]);
                 
             } // end if (v.wsServer.readState !== 1)
     
-        }, 5000);
+        }, 100);
 
         v.wsServer.onmessage = function (event) {
             var msg = JSON.parse (event.data);
