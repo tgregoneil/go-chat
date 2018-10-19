@@ -32,7 +32,7 @@ var v = {
 };  // end PRIVATE properties
 
     // PRIVATE Functions
-f = {};
+var f = {};
 
 
 f.init = () => {
